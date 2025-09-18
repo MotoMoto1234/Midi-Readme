@@ -19,9 +19,10 @@ It has LOTS of configuration options which can be daunting.
 
 ## Available versions
 
-- MidiQOL **v11.4.48** is compatible with dnd5e up to **v3.2.x** and Foundry **v12** (as all the versions mentioned below).
-- MidiQOL **v11.6.x** is compatible with dnd5e **v3.3.x**.
-- MidiQOL **12.4.27+** requires foundry 12 and is compatible with dnd5e 4.2+.
+- MidiQOL **v11.4.48** is compatible with dnd5e up to **v3.2.1** and Foundry **v12** (as all the versions mentioned below).
+- MidiQOL **v11.6.32** is compatible with dnd5e **v3.3.1**.
+- MidiQOL **12.4.64** requires foundry 12 and is compatible with dnd5e 4.4.
+- MidiQOL **13.0.X+** requires foundry 13 and is compatible with dnd5e 5.1.x.  This is the only branch recieving updates currently.  
 
 # Bug reports
 **Important** When submitting a bug report ALWAYS include either:
@@ -662,6 +663,8 @@ Negative DR is not supported (i.e. to increase damage taken).
 
 * flags.midi-qol.absorption.damageType (acid/bludgeoning etc.) converts damage of that type to healing when applied to the actor with the flag set. As well as a true/false value (set via mode CUSTOM) flags.midi-qol.absorption.type, can be a numeric value instead of true false. The damage type will be converted to healing and the quantum of the damage will be multiplied by the specified value (e.g. flags.midi-qol.absorption.acid OVERRIDE 0.5 will convert incoming acid damage to healing 1/2 of the acid damage). Negative numbers can be specified. So flags.midi-qol.absorption.acid ADD -1.5 will cause acid damage to do 1.5 times as much damage and be of type healing so will ignore acid damage resistance/vulnerability.
 
+* flags.midi-qol.rollModifiers.XXX.XXX.XXX.  These keys will let you append a dice modifier to the end of the base items first roll. For example: an effect value of just `r<2` would result in a daggers 1d4 changing to 1d4r<2.   
+
 * flags.midi-qol.superSaver.all/dex/str etc. If a save is required then the saver will take 0.5/0 damage on failed/successful save, compared to the normal 1/0.5. Useful for things like rogue's/monks evasion class feature.  
 
 * flags.midi-qol.ignoreNearbyFoes which, when set, means disadvantage from nearby foes (optional rules) will not affect the actor.
@@ -722,6 +725,7 @@ This will ask the player when rolling an attack, if they want to apply the optio
   - e.g. `flags.midi-qol.optional.NAME.save.fail.dex` OVERRIDE success will alow the saver to convert a failed save to a success.
 * `flags.midi-qol.optional.NAME.label`	label to use in the dialog		
 * `flags.midi-qol.optional.NAME.criticalDamage`. If present in the effect then bonus damage will use the existing damage rolls critical damage status and roll bonus damage as critical using the game/midi critical damage settings.
+* `flags.midi-qol.optional.NAME.displayBonusRolls` If present, `false` will remove the extra display card that shows when optionals are used in a roll.  `true` will show the card.  
 * `flags.midi-qol.optional.NAME.count`	how many uses the effect has (think lucky which has 3), if absent the bonus will be single use (bardic inspiration), turn for once per turn.   
   - **every** - you can use the optional effect on every occurrence
   - **reaction** - behaves as a reaction roll, i.e. uses up your reaction
